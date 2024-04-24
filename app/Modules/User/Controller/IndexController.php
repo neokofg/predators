@@ -27,11 +27,11 @@ class IndexController
             });
         }
 
-        $this->users = $this->users->paginate($request->first, page: $request->page ?? 1);
+        $this->users = $this->users->with(['skills','categories'])->paginate($request->first, page: $request->page ?? 1);
         $this->users = $this->users->appends([
             'first' => $request->first
         ]);
 
-        return $this->users->with(['skills','categories']);
+        return $this->users;
     }
 }
