@@ -32,6 +32,6 @@ class IndexController
             'first' => $request->first
         ]);
 
-        return $this->users;
+        return $this->users->with(['skills','categories']);
     }
 }
